@@ -1,3 +1,5 @@
+/*GAME FUNCTIONS*/
+
 // fight function (now with parameter for enemy's name) 
 var fight = function (enemy) {
   while (playerInfo.health > 0 && enemy.health > 0) {
@@ -167,8 +169,22 @@ var randomNumber = function (min, max) {
   return value;
 };
 
-var playerInfo = {
-  name: window.prompt("What is your robot's name?"),
+
+// function to set name
+var getPlayerName = function () {
+  var name = "";
+
+  while (name === "" || name === null) {
+    name = prompt("What is your robot's name?");
+  }
+  console.log("Your robot's name is " + name);
+  return name;
+};
+
+/*END GAME FUNCTIONS*/
+
+/*GAME INFORMATION/ VARIABLES */
+Var playerInfo = {
   health: 100,
   attack: 10,
   money: 10,
@@ -176,14 +192,13 @@ var playerInfo = {
     this.health = 100;
     this.money = 10;
     this.attack = 10;
-  }, //coma!
+  },
   refillHealth: function () {
     if (this.money >= 7) {
       window.alert("Refiling player's health by 20 for 7 dollars.");
       this.health += 20;
       this.money -= 7;
-    }
-    else {
+    } else {
       window.alert("You don't have enough money!");
     }
   },
@@ -192,12 +207,12 @@ var playerInfo = {
       window.alert("Upgrading player's attack by 6 for 7 dollars.");
       this.attack += 6;
       this.money -= 7;
-    }
-    else {
+    } else {
       window.alert("You don't have enough money!");
     }
   }
-}
+};
+
 var enemyInfo = [
   {
     name: "Roborto",
@@ -213,5 +228,7 @@ var enemyInfo = [
   }
 ];
 
-// start first game when page loads
+/*END GAME INFORMATION/ VARIABLES*/
+
+/*RUN GAME*/
 startGame();
